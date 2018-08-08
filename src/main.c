@@ -139,7 +139,7 @@ int main(int argc, char *argv[])
     {
         timebase=mf.lines_cha2/(1/mf.interval_cha2);
         if(sizeof(gnuplot_call) < snprintf(gnuplot_call,sizeof(gnuplot_call),"gnuplot -c "
-            "./src/config.gnuplot %s %0.9f %0.0f %0.6f %0.6f",argv[1],timebase,1/mf.interval_cha1,min,max))
+            "./src/config.gnuplot %s %0.9f %0.0f %0.6f %0.6f",argv[1],timebase,1/mf.interval_cha2,min,max))
         {
             fprintf(stderr,"data path too long!\n\n");
             return 1;
