@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
     char *time_res;             //ref. to the time resolution in input_cache 
     char gnuplot_call[128];     //parameterline buffer for gnuplot
     double timebase=0.0;
+    double min=0.0,max=0.0,current=0.0;   //min/max voltage for automatic y axis scaling.
     FILE *fp;
 
 
@@ -108,8 +109,10 @@ int main(int argc, char *argv[])
             printf("double interpretation of CHA2:\t%0.12f\n",mf.interval_cha2);
         #endif
         }
-        if(atof(input_cache)!=0)                            //count the measured values per channel
+        if((current=atof(input_cache))!=0)                  //count the measured values per channel
         {                                                   //currently only one timebase is accepted
+            if(current<min) min=current;
+            else if(current>max) max=current;
             if((mf.cha1==true) && (mf.cha2==false)) mf.lines_cha1++;
             else if((mf.cha1==true) && (mf.cha2==true) && (mf.lines_cha2 > mf.lines_cha1)) mf.lines_cha1++;
             else if((mf.cha2==true) && (mf.cha1==false)) mf.lines_cha2++;
@@ -126,7 +129,7 @@ int main(int argc, char *argv[])
     {
         timebase=mf.lines_cha1/(1/mf.interval_cha1); //Samples [S] / Samplerate [S/s] = timebase 
         if(sizeof(gnuplot_call) < snprintf(gnuplot_call,sizeof(gnuplot_call),"gnuplot -c "
-                "./src/config.gnuplot %s %0.9f %0.0f",argv[1],timebase,1/mf.interval_cha1))
+            "./src/config.gnuplot %s %0.9f %0.0f %0.6f %0.6f",argv[1],timebase,1/mf.interval_cha1,min,max))
         {
             fprintf(stderr,"data path too long!\n\n");
             return 1;
@@ -136,7 +139,7 @@ int main(int argc, char *argv[])
     {
         timebase=mf.lines_cha2/(1/mf.interval_cha2);
         if(sizeof(gnuplot_call) < snprintf(gnuplot_call,sizeof(gnuplot_call),"gnuplot -c "
-                "./src/config.gnuplot %s %0.9f %0.2f",argv[1],timebase,1/mf.interval_cha2))
+            "./src/config.gnuplot %s %0.9f %0.0f %0.6f %0.6f",argv[1],timebase,1/mf.interval_cha1,min,max))
         {
             fprintf(stderr,"data path too long!\n\n");
             return 1;
