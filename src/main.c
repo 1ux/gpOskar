@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     char input_cache[32];       //cache for reading the input file
     char *time_res;             //ref. to the time resolution in input_cache 
     char gnuplot_call[128];     //parameterline buffer for gnuplot
-    double frq=0.0;
+    double timebase=0.0;
     FILE *fp;
 
 
@@ -116,7 +116,6 @@ int main(int argc, char *argv[])
             else if((mf.cha2==true) && (mf.cha1==true) && (mf.lines_cha1 > mf.lines_cha2)) mf.lines_cha2++;
         }
     }
-    //Samples [S]/Samplerate [S/s] = frequenzy
     if(EOF==fclose(fp))
     {
         fprintf(stderr,"funktion \"fclose()\" reports error !\n");
@@ -125,9 +124,9 @@ int main(int argc, char *argv[])
     //Build input-stream for GNUplot
     if(mf.cha1) 
     {
-        frq=mf.lines_cha1/(1/mf.interval_cha1); //frq ist ein unpassender Bezeichner
+        timebase=mf.lines_cha1/(1/mf.interval_cha1); //Samples [S] / Samplerate [S/s] = timebase 
         if(sizeof(gnuplot_call) < snprintf(gnuplot_call,sizeof(gnuplot_call),"gnuplot -c "
-                "./src/config.gnuplot %s %0.16f %0.16f",argv[1],frq,1/mf.interval_cha1))
+                "./src/config.gnuplot %s %0.9f %0.0f",argv[1],timebase,1/mf.interval_cha1))
         {
             fprintf(stderr,"data path too long!\n\n");
             return 1;
@@ -135,27 +134,20 @@ int main(int argc, char *argv[])
     }
     else if(mf.cha2)
     {
-        frq=mf.lines_cha2/(1/mf.interval_cha2);
+        timebase=mf.lines_cha2/(1/mf.interval_cha2);
         if(sizeof(gnuplot_call) < snprintf(gnuplot_call,sizeof(gnuplot_call),"gnuplot -c "
-                "./src/config.gnuplot %s %0.16f %0.16f",argv[1],frq,1/mf.interval_cha2))
+                "./src/config.gnuplot %s %0.9f %0.2f",argv[1],timebase,1/mf.interval_cha2))
         {
             fprintf(stderr,"data path too long!\n\n");
             return 1;
         }
     }
-/*    if(sizeof(gnuplot_call) < snprintf(gnuplot_call,sizeof(gnuplot_call),"gnuplot -c "
-                "./src/config.gnuplot %s %0.16f %0.16f",argv[1],frq,1/mf.interval_cha1))
-    {
-        fprintf(stderr,"data path too long!\n\n");
-        return 1;
-    }
-*/    
     #ifdef DEBUG
         printf("status channel 1:\t%s",mf.cha1?"active\n":"inactive\n");
         printf("status channel 2:\t%s",mf.cha2?"active\n":"inactive\n");
         printf( "lines CHA1: %d\n"
                 "lines CHA2: %d\n",mf.lines_cha1,mf.lines_cha2);
-        printf("frequenzy:\t%0.8f\n",frq);
+        printf("timebase(time per DIV):\t%0.8f\n",timebase);
 
         printf("\ngnuplot program-call:\n%s\n\n",gnuplot_call); 
     #endif
