@@ -1,6 +1,6 @@
 #-------------Makro-Part------------------
 CC = gcc
-CFLAGS = -Wall -Werror -pedantic -std=c99 
+CFLAGS = -Wall -pedantic -std=c99 #-Werror 
 LDFLAGs =
 DEBUG = -DNDEBUG 
 
