@@ -3,7 +3,7 @@
 This program constructs a gnuplot program call from individual voltage measurements, which has been optimized for inclusion in documents. The plot thus represents a snapshot of a digital oscilloscope screen.<br>
 The program calculates the optimal axis scaling in t-y mode and the default configuration file for gnuplot can easily be extended to perform measurement interpolation, signal analysis, or anything else.<br>
 
-<img alt="example file" width="100%" src="docs/screenshot.png"> </td>
+<img alt="example file" width="75%" src="docs/screenshot.png"> </td>
 
 ##  Build
 
