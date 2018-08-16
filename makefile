@@ -7,7 +7,7 @@ DEBUG = -DNDEBUG
 
 VPATH = src
 #--------------Linker-Part-----------------
-gpOpenHantek: main.o
+gpOskar: main.o
 	echo $@ is now linked
 	$(CC) $(LDFLAGS) -o $@ $^
 #--------------Compiler-Part---------------
@@ -15,4 +15,4 @@ main.o : main.c
 	$(CC) $(DEBUG) $(CFLAGS) -o $@ -c $<
 
 clean : 
-	rm -f *.o
+	rm -f *.o *.txt
