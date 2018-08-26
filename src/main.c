@@ -10,7 +10,6 @@
 //This program constructs a gnuplot program call from individual voltage measurements.
 //You need gnuplot version >=5.0
 //The basic gnuplot config file is in /src
-*/
 
 struct measur_frame
 {

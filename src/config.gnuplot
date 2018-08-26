@@ -9,22 +9,26 @@
 set terminal wxt size 800, 600
 set key font ",14"
 set grid xtics ytics
-set xlabel 'Zeit t in Sekunden' font "Helvetica,14"
+set xlabel "Zeit t in Sekunden" font "Helvetica,14"
 set ylabel 'Spannung U in Volt' font "Helvetica,14"
 #set size 1,0.5 #Seitenverhältnis ändern
 set xtics ARG2/10
 set format x '%0.0s\%c'
 
-print "filename(ARG1):\t\t\t", ARG1
-print "timebase(ARG2) \t in s:\t\t",ARG2 
-print "samplerate(ARG3) in S/s:\t", ARG3
-print "min voltage valure: \t\t", ARG4
-print "max voltage valure: \t\t", ARG5
+print "\nlog data output\n--------------\n"
+print sprintf("filename(ARG1):\t\t\t%s",ARG1)
+print sprintf("timebase(ARG2): \t\t%s\tseconds",ARG2)
+print sprintf("samplerate(ARG3) \t\t%s\tSamples/sec", ARG3)
+print sprintf("min voltage valure(ARG4): \t%s\tvoltage", ARG4)
+print sprintf("max voltage valure(ARG5): \t%s\tvoltage", ARG5)
+
+#set label "Abtastrate: " . ARG3/1000000 . "MS/sec" at 0,0
+
 if (ARG6 eq '') {
-    plot [0:ARG2] [ARG4:ARG5] ARG1 using ($0/ARG3):1 w l lc rgb 'blue' title 'Kanal 1'
+    plot [0:ARG2] [ARG4:ARG5] ARG1 using ($0/ARG3):1 w l lc rgb '#c94f7c' title "Kanal 1" 
     }
 else {
-    print "filename2(ARG6):\t\t", ARG6
+    print sprintf("filename2(ARG6):\t\t%s", ARG6)
     plot [0:ARG2] [ARG4:ARG5] ARG1 using ($0/ARG3):1 w l lc rgb '#c94f7c' title 'Kanal 1', ARG6 using ($0/ARG3):1 w l lc rgb '#75ccb9' title 'Kanal 2'
     }
 

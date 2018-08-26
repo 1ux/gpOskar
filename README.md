@@ -1,9 +1,12 @@
 # gpOskar
 
-This program constructs a gnuplot program call from individual voltage measurements, which has been optimized for inclusion in documents. The plot thus represents a snapshot of a digital oscilloscope screen.<br>
-The program calculates the optimal axis scaling in t-y mode and the default configuration file for gnuplot can easily be extended to perform measurement interpolation, signal analysis, or anything else.<br>
+This program constructs a gnuplot program call from individual voltage measurements, which has been optimized for inclusion in documents. The plot thus represents a snapshot of a digital oscilloscope screen and
+the program calculates the optimal axis scaling in t-y mode and the default configuration file for gnuplot can easily be extended to perform measurement interpolation, signal analysis, or anything else.<br><br>
+
+Currently two channels are supported in one graphic.<br>
 
 <img alt="example file" width="75%" src="docs/screenshot.png"> </td>
+<img alt="example file" width="75%" src="docs/screenshot_terminal.png"> </td>
 
 ##  Build
 
@@ -15,7 +18,7 @@ You need raw data from your oscilloscope in the following form:<br>
 #header<br>
 Voltage value in volts<br>
 Voltage value in volts<br>
-...
+...<br>
 #header<br>
 Voltage value in volts<br>
 ...
@@ -28,7 +31,6 @@ Example:<br>
 1.57965<br>
 ...
 
-Currently two channels are supported in one graphic.
 The raw data should be stored as ASCII text and the basic gnuplot config file is in /src
 
 ## Licence
