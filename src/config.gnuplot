@@ -18,9 +18,9 @@ set format x '%0.0s\%c'
 print "\nlog data output\n--------------\n"
 print sprintf("filename(ARG1):\t\t\t%s",ARG1)
 print sprintf("timebase(ARG2): \t\t%s\tseconds",ARG2)
-print sprintf("samplerate(ARG3) \t\t%s\tSamples/sec", ARG3)
-print sprintf("min voltage valure(ARG4): \t%s\tvoltage", ARG4)
-print sprintf("max voltage valure(ARG5): \t%s\tvoltage", ARG5)
+print sprintf("samplerate(ARG3) \t\t%s\tsamples/sec", ARG3)
+print sprintf("min voltage value(ARG4): \t%s\tvoltage", ARG4)
+print sprintf("max voltage value(ARG5): \t%s\tvoltage", ARG5)
 
 #set label "Abtastrate: " . ARG3/1000000 . "MS/sec" at 0,0
 

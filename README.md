@@ -35,5 +35,9 @@ The raw data should be stored as ASCII text and the basic gnuplot config file is
 
 ## Licence
 
-This program by Michael Krause is licenced under the terms of the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.de.html).<br>
+This program by Michael Krause is licensed under the terms of the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.de.html).<br>
 Please note that gnuplot is an independent software that is not from the gpOskar author. gnuplot has its own licensing terms.
+
+## Thanks to:
+
+Jeremy Heighway for mentoring english grammar and spelling
