@@ -46,8 +46,9 @@ int main(int argc, char *argv[])
     }
     if(strcmp(argv[1],"-h")==0)
     {
-        printf("\n\tgpOskar - utility for simple output of gnuplot-graphs\n"
-                "\trecorded by openhantek or other programs. You need gnuplot version >=5.0\n\n");
+        printf("\n\tThis program constructs a gnuplot program call from individual voltage measurements\n "
+                "\trecorded by an oscilloscope, which has been optimized for inclusion in documents.\n"
+                "\tRaw data can be recorded with openhantek or other programs. You need gnuplot version >=5.0\n\n");
         printf("\tuse: gpOskar SOURCE.txt\n\tSOURCE is a csv file with voltage values\n\n");
         return 0;
     }
