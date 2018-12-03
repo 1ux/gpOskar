@@ -25,11 +25,11 @@ print sprintf("max voltage value(ARG5): \t%s\tvoltage", ARG5)
 stats ARG1
 
 if (ARG6 eq '') {
-    plot [0:ARG2] [ARG4:ARG5] ARG1 using ($0/ARG3):1 w l lc rgb '#4466ad' title "Kanal 1" 
+    plot [0:ARG2] [(ARG4+ARG4*0.1):(ARG5+ARG5*0.1)] ARG1 using ($0/ARG3):1 w l lc rgb '#4466ad' title "Kanal 1" 
     }
 else {
     print sprintf("filename2(ARG6):\t\t%s", ARG6)
-    plot [0:ARG2] [ARG4:ARG5] ARG1 using ($0/ARG3):1 w l lc rgb '#c94f7c' title 'Kanal 1', ARG6 using ($0/ARG3):1 w l lc rgb '#75ccb9' title 'Kanal 2'
+    plot [0:ARG2] [(ARG4+ARG4*0.1):(ARG5+ARG5*0.1)] ARG1 using ($0/ARG3):1 w l lc rgb '#c94f7c' title 'Kanal 1', ARG6 using ($0/ARG3):1 w l lc rgb '#75ccb9' title 'Kanal 2'
     }
 
 pause -1
