@@ -1,12 +1,17 @@
+*Ein Gelehrter in seinem Laboratorium ist nicht nur ein Techniker; er steht auch vor den Naturgesetzen wie ein Kind vor der Märchenwelt. - Marie Curie*
+
 # gpOskar
 
 This program constructs a gnuplot program call from individual voltage measurements, which has been optimized for inclusion in documents. The plot thus represents a snapshot of a digital oscilloscope screen and
 the program calculates the optimal axis scaling in t-y mode and the default configuration file for gnuplot can easily be extended to perform measurement interpolation, signal analysis, or anything else.<br><br>
 
-Currently two channels are supported in one graphic.<br>
+Currently two channels are supported in one graphic.
 
-<img alt="example file" width="75%" src="docs/screenshot.png"> </td>
-<img alt="example file" width="75%" src="docs/screenshot_terminal.png"> </td>
+
+![example oscillogram](docs/example_oscillogram.png)
+
+![example terminal output](docs/example_terminal_output.png)
+
 
 ##  Build
 
@@ -40,4 +45,4 @@ Please note that gnuplot is an independent software that is not from the gpOskar
 
 ## Thanks to:
 
-Jeremy Heighway for mentoring english grammar and spelling
+Jeremy Heighway for mentoring English grammar and spelling.
